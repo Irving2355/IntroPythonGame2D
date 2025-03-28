@@ -26,7 +26,7 @@ pygame.mixer.music.play(-1)
 #posicion iniciales
 player_x,player_y = 100,100
 object_x,object_y = random.randint(50,WIDTH-50),random.randint(50,HEIGHT-50)
-velocidad = 20
+velocidad = 1
 score = 0
 
 #fuente 
@@ -39,37 +39,37 @@ while running:
         if event.type == pygame.QUIT:
             running=False
         
-        keys = pygame.key.get_pressed()
-        
-        if keys[pygame.K_LEFT] and player_x>0:
-            player_x -= velocidad
-        if keys[pygame.K_RIGHT] and player_x < WIDTH-player_width:
-            player_x += velocidad
-        if keys[pygame.K_UP] and player_y>0:
-            player_y -= velocidad
-        if keys[pygame.K_DOWN] and player_y < HEIGHT - player_height:
-            player_y += velocidad
-        
-        #Detectar colisiones
-        player_rect = pygame.Rect(player_x,player_y,player_width,player_height)
-        object_rect = pygame.Rect(object_x,object_y,object_width,object_height)
-        
-        if player_rect.colliderect(object_rect):
-            score +=1
-            object_x = random.randint(50,WIDTH-50)
-            object_y = random.randint(50,HEIGHT-50)
-        
-        #dibujar imagen
-        #Rellenar la pantalla con color
-        screen.fill((0,0,0))
-        screen.blit(player_img,(player_x,player_y))
-        screen.blit(object_img,(object_x,object_y))
-        
-        #mostrar puntuacion
-        text = font.render(f"Puntuacion: {score}",True,(255,255,255))
-        screen.blit(text,(10,10))
-        
-        #actualizar la pantalla
-        pygame.display.flip()
+    keys = pygame.key.get_pressed()
+    
+    if keys[pygame.K_LEFT] and player_x>0:
+        player_x -= velocidad
+    if keys[pygame.K_RIGHT] and player_x < WIDTH-player_width:
+        player_x += velocidad
+    if keys[pygame.K_UP] and player_y>0:
+        player_y -= velocidad
+    if keys[pygame.K_DOWN] and player_y < HEIGHT - player_height:
+        player_y += velocidad
+    
+    #Detectar colisiones
+    player_rect = pygame.Rect(player_x,player_y,player_width,player_height)
+    object_rect = pygame.Rect(object_x,object_y,object_width,object_height)
+    
+    if player_rect.colliderect(object_rect):
+        score +=1
+        object_x = random.randint(50,WIDTH-50)
+        object_y = random.randint(50,HEIGHT-50)
+    
+    #dibujar imagen
+    #Rellenar la pantalla con color
+    screen.fill((0,0,0))
+    screen.blit(player_img,(player_x,player_y))
+    screen.blit(object_img,(object_x,object_y))
+    
+    #mostrar puntuacion
+    text = font.render(f"Puntuacion: {score}",True,(255,255,255))
+    screen.blit(text,(10,10))
+    
+    #actualizar la pantalla
+    pygame.display.flip()
 #salir del juego
 pygame.quit()
