@@ -15,10 +15,10 @@ while running:
         if event.type == pygame.QUIT:
             running=False
         
-        #Rellenar la pantalla con color
-        screen.fill((0,0,0))
-        
-        #actualizar la pantalla
-        pygame.display.flip()
+    #Rellenar la pantalla con color
+    screen.fill((0,0,0))
+    
+    #actualizar la pantalla
+    pygame.display.flip()
 #salir del juego
 pygame.quit()
